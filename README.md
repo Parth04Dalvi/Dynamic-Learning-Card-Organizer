@@ -1,76 +1,59 @@
-Dynamic Learning Card Organizer (Angular)
-🧠 Real-time Collaborative Concept Mapping Tool
-This project is a single-page web application built with modern Angular and Firebase Firestore that allows multiple users to collaboratively create, organize, and visualize complex concepts in a shared canvas. It is designed to replace static flashcards with a dynamic, real-time concept map.
+🧠 Concept Canvas: Collaborative Map Builder
 
-✨ Key Features & Technical Highlights
-This application demonstrates mastery of modern front-end architecture, state management, and real-time cloud data persistence:
+Concept Canvas is a real-time, collaborative web application built with Angular Signals and Firebase Firestore that allows users to visually organize concepts, ideas, and learning topics as movable cards and define relationships between them. It’s perfect for brainstorming, curriculum planning, or visualizing dependencies.
 
-Modern Angular Architecture: Built as a single, self-contained Standalone Angular Component using the Signals pattern for highly efficient and reactive state management.
+✨ Key Features
 
-Real-time Collaboration: Uses Firebase Firestore's onSnapshot listeners to instantly synchronize card positions, content edits, and connections across all active users.
+Real-time Collaboration: All card data and connections are stored in Firestore and updated in real-time for all active users, making it a truly shared workspace.
 
-Semantic Data Modeling: Cards and Connections are modeled as separate entities. Connections include a label (Prerequisite, Example Of, etc.) to define complex semantic relationships.
+Concept Card Management (CRUD): Easily create, edit, move, and delete colorful learning cards.
 
-Advanced Canvas Interaction:
+Owner-Based Editing: Cards can only be edited or deleted by the user who created them (the owner), ensuring content integrity in a public space.
 
-Drag-and-Drop: Cards are drag-and-droppable, instantly updating their coordinates in the database.
+Drag-and-Drop Interface: Cards use responsive drag-and-drop functionality with a grid snapping feature for clean visual organization.
 
-Pan & Zoom: The canvas supports intuitive Pan (click-and-drag) and Zoom (Ctrl+Wheel) functionality, allowing users to navigate large concept maps efficiently.
+Relational Mapping: Connect two selected cards to define their relationship (e.g., "Prerequisite For," "Example Of").
 
-Dynamic Visualizations: Connection lines are rendered using SVG and feature different stroke dash patterns based on the semantic relationship, providing clear visual hierarchy.
-
-In-Place Editing: Users can edit the title, content, and color of their own cards via a dedicated sidebar panel, showcasing conditional rendering and persistent data updates.
+Angular Signals: Leverages Angular's modern reactivity system (Signals) for highly efficient state management and instantaneous UI updates.
 
 🛠️ Technology Stack
-Framework: Angular (Standalone Component, Signals, Native Control Flow)
 
-Styling: Tailwind CSS (for rapid, responsive UI development)
+This application is built as an Angular Standalone Component, utilizing modern web and Google Cloud technologies:
 
-Persistence: Firebase Firestore (Real-time database)
-
-Visuals: Scalable Vector Graphics (SVG) and HTML Canvas for drawing lines and managing interactive elements.
+Frontend Framework: Angular (Standalone Component)
 
 Language: TypeScript
 
-🚀 How to Use the Organizer
-Authentication: The app automatically signs you in anonymously using a unique User ID, which is displayed in the sidebar.
+State Management: Angular Signals (signal, computed, effect)
 
-Create a Card: Use the Add New Card section to enter a title and content. The card will appear on the canvas.
+Styling: Tailwind CSS for a responsive, utility-first design.
 
-Drag & Organize: Click and drag any card to move it. The position is instantly saved and synchronized.
+Database: Firebase Firestore (Real-time, persistent, public data storage).
 
-Edit Content: Click a card (if you are the owner) to open the Edit Card panel in the sidebar, where you can update its details and color.
+Authentication: Firebase Authentication (Handles custom token sign-in to securely generate unique User IDs for tracking ownership).
 
-Create Connections:
+👩‍💻 How to Use
 
-Click the first card you want to connect.
+Canvas Interaction
 
-Click the second card.
+Create a Card: Use the Add New Card panel on the left sidebar to enter a title, content summary, and select a color, then click Create Card.
 
-Select the Relationship Type (e.g., Prerequisite For) from the dropdown.
+Move a Card: Click and hold any card to drag it to a new position on the canvas. Positions are saved automatically.
 
-Click Connect Selected Cards. A line representing the relationship will appear.
+Edit a Card: If you are the card's creator/owner, click the card once to open the Edit Card panel in the sidebar. Make your changes and click Save Changes.
 
-Navigate: Use the Zoom Controls (top right) or hold the mouse button down in the canvas to pan and explore large concept maps.
+Connect Cards:
 
-🗺️ Data Modeling (Firestore Collections)
-The application manages two primary public collections for collaborative state:
+Click the first card you want to link.
 
-Collection
+Click the second card you want to link.
 
-Description
+Select the Relationship Type (e.g., "Prerequisite For").
 
-Data Fields
+Click Connect Selected Cards. A line will appear between the two concepts.
 
-/artifacts/{appId}/public/data/cards
+Delete a Connection: Click directly on the connection line to instantly delete the mapped relationship.
 
-Stores the content, position, and metadata for each concept card.
+Data Security & Access
 
-id, title, content, x, y, color, ownerId
-
-/artifacts/{appId}/public/data/connections
-
-Stores the semantic links between cards.
-
-id, cardAId, cardBId, label
-
+This application is configured to save all map data (cards and connections) to a public Firestore collection under your Canvas application ID (/artifacts/{appId}/public/data/). This allows multiple users to collaborate simultaneously and see the same data in real-time. User identity is managed using the provided __initial_auth_token for secure authentication and ownership tracking.
