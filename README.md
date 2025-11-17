@@ -1,5 +1,7 @@
 🧠 Concept Canvas: Collaborative Map Builder
 
+<img width="632" height="572" alt="image" src="https://github.com/user-attachments/assets/15e504d9-bcf0-41b6-aab8-d3343081afab" />
+
 Concept Canvas is a real-time, collaborative web application built with Angular Signals and Firebase Firestore that allows users to visually organize concepts, ideas, and learning topics as movable cards and define relationships between them. It’s perfect for brainstorming, curriculum planning, or visualizing dependencies.
 
 ✨ Key Features
